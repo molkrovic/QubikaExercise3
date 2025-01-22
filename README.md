@@ -65,9 +65,10 @@ project-root/
    ```bash
    pip install -r requirements.txt
    ```
-3. Install Playwright browsers:
+3. Install Playwright browsers and dependencies:
    ```bash
    playwright install
+   playwright install-deps
    ```
 
 ## Running the Tests
