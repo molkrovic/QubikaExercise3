@@ -30,6 +30,8 @@ def check_error_messages(contact_modal, completed_fields=None):
             assert not error_msg_locator.is_visible(), f"Error message found for field: {field_name}"
         else:
             assert error_msg_locator.is_visible(), f"No error message found for field: {field_name}"
+            error_msg_color = error_msg_locator.evaluate('element => window.getComputedStyle(element).color')
+            assert error_msg_color == "rgb(255, 0, 0)", f"The error message color is {error_msg_color}, not red."
 
 
 def test_workflow(page):
@@ -77,9 +79,8 @@ def test_workflow(page):
     submit_button.click()
 
     # Step 6: Validate that all mandatory fields have an error message
+    # Step 7: Validate that the error messages are displayed in red
     check_error_messages(contact_modal)
-
-    # Step 7: Validate that only First Name field is marked with red color
 
     # Step 8: Write ‘Test name’ on the First Name field
     first_name_field.fill('Test name')
@@ -88,5 +89,6 @@ def test_workflow(page):
     submit_button.click()
 
     # Step 10: Validate that all mandatory fields have an error message except First Name field
+    # Step 11: Validate that the error messages are displayed in red
     completed_fields = ["firstname"]
     check_error_messages(contact_modal, completed_fields)

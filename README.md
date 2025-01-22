@@ -29,7 +29,7 @@ This project automates the testing of a workflow on the Qubika website (https://
 11) Validate that only ‘Email’ field is marked with red color
 
 ## Known Deviations
-- **Red Highlight Behavior**: Steps 7 and 11 suggest that the first unfilled required field should be marked in red. This behavior was not observed during testing.
+- **Red Highlight Behavior**: Steps 7 and 11 suggest that the first unfilled required field should be marked in red. This behavior was not observed during testing. Instead, the test performed consists of validating that when an error message is displayed for a required empty field, this message is red.
 - **Field Naming**: The "Name" field is split into "First Name" and "Last Name," which were validated separately.
 - **Button Label**: The button labeled "Submit" was tested instead of the non-existent "Get in touch" button.
 
